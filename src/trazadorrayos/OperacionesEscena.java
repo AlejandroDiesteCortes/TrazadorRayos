@@ -6,13 +6,21 @@ package trazadorrayos;
 
 import java.awt.Color;
 import java.util.ArrayList;
-
 import javax.vecmath.Point4d;
 import javax.vecmath.Vector3d;
 import javax.vecmath.Vector4d;
 
 public class OperacionesEscena {
 
+	/**
+	 * Devuelve la figura intersectada más cercana 
+	 * @param figuras
+	 * @param punto
+	 * @param rayo
+	 * @param camara
+	 * @param desde
+	 * @return
+	 */
 	public static Figura FiguraMasCercana(ArrayList<Figura> figuras,
 			Point4d punto, Rayo rayo, Camara camara, Figura desde) {
 		Figura figura = null;
@@ -54,8 +62,8 @@ public class OperacionesEscena {
 					escena.getFocos().get(i).getColor());
 			/*
 			 * Ahora hay que ver si el rayo intersecta con alguno de los objetos
-			 * de la escen, y si lo hace, quedarnos unicamente con el objeto mas
-			 * cercano a pa pantalla
+			 * de la escena, y si lo hace, quedarnos unicamente con el objeto mas
+			 * cercano a la pantalla
 			 */
 			color = colorDesdeRayo(escena, rayo, maxDepth, null, false, i);
 			if (sumaColor.x < color.getRed()) {
@@ -73,7 +81,7 @@ public class OperacionesEscena {
 		return color;
 	}
 
-	/*
+	/**
 	 * Devuelve el color que devuelve un rayo al golpear una figura en un punto
 	 */
 	public static Color colorDesdeRayo(Escena escena, Rayo rayo, int MaxDepth,
